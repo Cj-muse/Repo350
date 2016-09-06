@@ -1,0 +1,45 @@
+Cpt S 350 Homework #1
+Conner Mattingly
+
+1. In cpts317, we learned that a problem is a language. Such a statement
+builds a link from 317 to 350. For instance, consider the following problem:
+	Given: a graph G,
+	Question: is G connected?
+	- Yes because of the nature of graphs.
+
+This problem corresponds to the language that puts all the string encodings
+of the positive instances of the problem into: {<G> : G is a connected graph},
+where <G> is a string encoding of graph G.
+
+Please indicate the laguages corresponding to the following four problems:
+Given: a number n and two primes p, q,
+Question: is it the case that n = p · q?
+	-Not for all values of n.  <npq>
+
+Given: a number n,
+Question: is it the case that n = p · q for some primes p and q?
+	- Yes for any q = n/p and p = n/q.
+
+Given: an NFA A and a word w
+Question: Does A accept w ?
+	- Not necessarily but possibly.
+
+Given: an NFA A
+Question: Is there any word w such that A accepts w ?
+	-Yes, if the word fits the rules of the Automaton then A would accept it.
+
+2. Argue why the following is true:
+(1). Function 2n^3 − 18n is O(n^3) and also it is O(n^4) but it is not O((n^2)log(n)).
+	- 
+
+(2). Function (3n^2)(2^2n)is 2^(O(n)).
+	-
+
+3. In algorithm design, the most difficult part is probably to identify precisely
+the problem to solve. For instance, I have two maps or two molecular
+structures that I want to decide whether they are “similar”. Clearly, the key
+here is first to define the similarity measure (I don’t have an answer) between
+two graphs. Please describe your ideas in defining the measure (there is no
+wrong answers here).
+
+	- In order to define the measure of similarity between two items that are going to be compared, one must identify certain quantifiable qualities or features that both items have.  This way the values that both items have for the comparable feature can be measured and then compared.
