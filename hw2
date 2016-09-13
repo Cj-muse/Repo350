@@ -1,0 +1,52 @@
+Cpt S 450 Homework #2
+Conner Mattingly
+
+1. (easy) Write psuedo-code for partition(A, p, q).
+
+
+
+
+
+2. (standard) Consider insertsort. Suppose that the input array A has 1% probability to be monotonically decreasing. Show that, in this case, the average-case complexity of insertsort is Θ(n^2).
+
+
+
+
+
+
+
+
+
+3. (not hard) Let iqsort(A, 1, n) be an algorithm that sorts an array A with n integers. It works as follows:
+iqsort(A, p, q)
+{
+  if p ≥ q, return;
+  r=partition(A, p, q);
+
+  //run quick sort on the low part
+  quicksort(A, p, r − 1);
+
+  //run insert sort on the high part
+  insertsort(A, r + 1, q);
+}
+Compute the best-case, worst-case, and average-case complexities of iqsort.
+
+
+
+
+
+
+
+
+
+4. (hard) Let mixsort(A, 1, n) be an algorithm that sorts an array A with n integers. It works as follows:
+mixsort(A, p, q)
+{
+  if p ≥ q, return;
+  r=partition(A, p, q);
+  //run mixsort on the low part
+  mixsort(A, p, r − 1);
+  //run insert sort on the high part
+  insertsort(A, r + 1, q);
+}
+Compute the best-case, worst-case, and average-case complexities of mixsort.
