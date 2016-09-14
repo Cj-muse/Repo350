@@ -3,14 +3,13 @@ Conner Mattingly
 
 1. (easy) Write psuedo-code for partition(A, p, q).
 
-
-
+  1. Pick an element to be a pivot element (r).
+  2. Reorder the array according to r.  All elements less than r come before it and all elements greater than r come after it.  
+     Values equal to r can come before or  after r.
+  3. Repeat steps recursively on the lower and higher ends of the array seperatly.
 
 
 2. (standard) Consider insertsort. Suppose that the input array A has 1% probability to be monotonically decreasing. Show that, in this case, the average-case complexity of insertsort is Θ(n^2).
-
-
-
 
 
 
