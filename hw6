@@ -1,0 +1,19 @@
+Conner Mattingly 
+11282717
+Cpts 350 
+HW6
+
+1.
+When given G = (V,E), and asked to determine if G is a DAG I would use the following algorithm that uses the idea of topological sorting.  (Based on algorithm from Arthur B. Kahn)
+
+Let L be and empty list to store sorted nodes
+Let W be the set of all nodes that have no incoming edges
+
+While W is not empty do the following
+	
+ 
+
+
+2.
+3.
+4.
