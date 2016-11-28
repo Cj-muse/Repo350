@@ -4,24 +4,58 @@ HW8
 
 1.
 
-10539750919
+e = 49  |  n = 10539750919  |  d = ?
+
 Q(n) = 97287819552
 
+C = ITG!AAEXEX IRRG!IGRXI OIXGEREAGO
+M = ?
 
-d*e = 1 mod Q(n)
-d*49 = 1 mod 97287819552
+In order to decrypt the Cipher text we must first use the baby ascii to decode it to get manipulable didgets.
 
-d = 32266366849
+  so: C = ITG!AAEXEX IRRG!IGRXI OIXGEREAGO = 4730112828 4663943684 5483262135
 
-C1^d mod n = M1
-C2^d mod n = M2
-C3^d mod n = M3
+Then normally a private key would be used to decrypt the cipher text.  However, since we do not have the private key, we will need to break the code, or somehow figure out what the private key is.
+Since we know n already we need only to discover d to complete our knowledge of the private key.
 
-Source of the tool.
-http://www.javascripter.net/math/calculators/eulertotientfunction.htm
+Lets look at the formulas at our disposal. 
 
+  n = p * q where p and q are prime numbers 
 
+  M1 = (C1^d mod n)
+  M2 = (C2^d mod n) 
+  M3 = (C3^d mod n)  
 
+  C1 = (M1^e mod n)
+  C2 = (M2^e mod n) 
+  C3 = (M3^e mod n)  
+
+Apply the parts that we know,
+
+  M1 = (4730112828^d mod 10539750919) 
+  M2 = (4663943684^d mod 10539750919) 
+  M3 = (5483262135^d mod 10539750919) 
+
+We must solve for d.
+We can do this using the extended euclidian algorithm to find the modular multiplicative inverse starting with the following equation.
+  
+  d*e = 1 mod Q(n)
+  
+See my attached scrap paper for my execution of the math involved to get the following answer for d.
+  
+  d = 32266366849
+   
+Now we can use the formulas for the three distinct plaintext parts M1, M2, and M3 to solve for each.
+  
+  M1 = (4730112828^32266366849 mod 10539750919) 
+  M2 = (4663943684^32266366849 mod 10539750919) 
+  M3 = (5483262135^32266366849 mod 10539750919) 
+
+  M1 = 36217 = GREAT
+  M2 = 98483 = !XIXG
+  M3 = 57847 = OTXIT
+
+The secret message reads "GREAT I GOT IT" if the X's are considered spaces.
 
 2.
 Yes.
@@ -29,16 +63,19 @@ As follows,
 
 Sort the symbols from lowest frequency to highest in a list.
 while there are still values in the list
-  if the value of the frequency of the first node is 
   Create 10 new nodes using the first 10 symbols.  
   Attach them as children of a new internal node that contains, as its value, the sum of its childrens frequencies.
   Add weights to the links starting with 0 for the first node and ending with 9 for the tenth node created.
   Add the internal node to a second list.
 once all symbols in the list have been turned into nodes connect their parents to a root node by performing the above loop on the second list that was populated. 
   
+  Note: when attempting to create nodes and less than ten are available just use numbers from 0 to 9  untill you run out of nodes. This is fine.  Start over at zero each time you loop.
+  
+  To read the graph that is created in order to get the diget representation of a symbol just concatenate the digets along the path from the root to the leaf that contains the selected symbol. 
+  
 
 3.
-In cryptanalysis often in order to break a cryptographic protocol it boils down to mathematics.  For example when breaking RSA encryption one must perform prime factorization and use the extended euclidean algorithm in order to gain enough information to crack the encoded cipher text and expose the plaintext.  This  
+In cryptanalysis often in order to break a cryptographic protocol it boils down to mathematics.  For example when breaking RSA encryption one must perform prime factorization and use the extended euclidean algorithm in order to gain enough information to crack the encoded cipher text and expose the plaintext.  This methematical reduction of the ecryption/ decryption scheme is very common since the core of most encryption schemes rely on some sort of mathematical expression or operation. Other examples are higher-order cryptanalysis and algebraic analysis, which both use math exstensibvly to test a given cryptographic protocol.
 
 
 
