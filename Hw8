@@ -1,0 +1,46 @@
+Conner Mattingly 
+11282717
+hw8
+
+1.
+e = 49  |  n = 10539750919  |  d = ?
+
+C = ITG!AAEXEX IRRG!IGRXI OIXGEREAGO
+M = ?
+
+In order to decrypt the Cipher text we must first use the baby ascii to decode it to get manipulable didgets.
+
+  so: C = ITG!AAEXEX IRRG!IGRXI OIXGEREAGO = 4730112828 4663943684 5483262135
+
+Then normally a private key would be used to decrypt the cipher text.  However, since we do not have the private key, we will need to break the code, or somehow figure out what the private key is.
+Since we know n already we need only to discover d to complete our knowledge of the private key.
+
+Lets look at the formulas at our disposal. 
+
+  n = p * q where p and q are prime numbers 
+
+
+  M1 = (C1^d mod n)
+  M2 = (C2^d mod n) 
+  M3 = (C3^d mod n)  
+
+  C1 = (M1^e mod n)
+  C2 = (M2^e mod n) 
+  C3 = (M3^e mod n)  
+
+
+Apply the parts that we know,
+
+  M1 = (4730112828^d mod 10539750919) 
+  M2 = (4663943684^d mod 10539750919) 
+  M3 = (5483262135^d mod 10539750919) 
+  
+  
+
+
+
+
+2.
+
+3.
+The current techniques in finding whether a cryptographic protocol has a flaw or not 
