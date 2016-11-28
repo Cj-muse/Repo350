@@ -1,0 +1,44 @@
+Conner Mattingly 
+11282717
+HW8
+
+1.
+
+10539750919
+Q(n) = 97287819552
+
+
+d*e = 1 mod Q(n)
+d*49 = 1 mod 97287819552
+
+d = 32266366849
+
+C1^d mod n = M1
+C2^d mod n = M2
+C3^d mod n = M3
+
+Source of the tool.
+http://www.javascripter.net/math/calculators/eulertotientfunction.htm
+
+
+
+
+2.
+Yes.
+As follows, 
+
+Sort the symbols from lowest frequency to highest in a list.
+while there are still values in the list
+  if the value of the frequency of the first node is 
+  Create 10 new nodes using the first 10 symbols.  
+  Attach them as children of a new internal node that contains, as its value, the sum of its childrens frequencies.
+  Add weights to the links starting with 0 for the first node and ending with 9 for the tenth node created.
+  Add the internal node to a second list.
+once all symbols in the list have been turned into nodes connect their parents to a root node by performing the above loop on the second list that was populated. 
+  
+
+3.
+In cryptanalysis often in order to break a cryptographic protocol it boils down to mathematics.  For example when breaking RSA encryption one must perform prime factorization and use the extended euclidean algorithm in order to gain enough information to crack the encoded cipher text and expose the plaintext.  This  
+
+
+
