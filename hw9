@@ -1,0 +1,84 @@
+Conner Mattingly
+11282717
+hw9
+
+1.
+Definitions:
+  G(V, E): weighted directed graph, with set of vertices V and set of directed edges E,
+  w(u, v): cost of directed edge from node u to node v (costs are non-negative).
+  s: the source node
+  t: the destination node
+  i: the number of shortest paths to find
+  P_u: a path from s to u
+  B is a heap data structure containing paths
+  P: set of shortest paths from s to t
+  count_u: number of shortest paths found to node u
+  Links that do not satisfy constraints on the shortest path are removed from the graph
+
+Algorithm:
+  *P = empty,
+  *count_u = 0, for all u in V
+  insert path P_s = {s} into B with cost 0
+  
+  while B is not empty and count_t < i:
+    – let P_u be the shortest cost path in B with cost C
+    – B = B − {P_u }, count_u = count_u + 1
+    – if u = t then P = P and P_u
+    – if count_u ≤ i then
+      for each vertex v adjacent to u:
+        – if v is not in P_u then
+          – let P_v be a new path with cost C + w(u, v) formed by concatenating edge (u, v) to path P_u
+          – insert P_v into B
+  return P
+
+
+2.
+Definitions:
+  G(V, E): weighted directed graph, with set of vertices V and set of directed edges E,
+  w(u, v): cost of directed edge from node u to node v (costs are non-negative).
+  s: the source node
+  t: the destination node
+  P_u: a path from s to u
+  B is a heap data structure containing paths
+  P: set of shortest paths from s to t
+  R: bool stating whether or not the last edge was red (each path P_u has R) 
+  Links that do not satisfy constraints on the shortest path are removed from the graph
+
+Algorithm:
+  *P = empty,
+  *count_u = 0, for all u in V
+  insert path P_s = {s} into B with cost 0
+  
+  while B is not empty :
+    - let P_u be the shortest cost path in B with cost C
+    - B = B − {P_u }
+    - if u = t then P = P and P_u
+      - return P_u (The shortest valid path)
+    for each vertex v adjacent to u:
+      - if v is not in P_u then
+        - let P_v be a new path with cost C + w(u, v) formed by concatenating edge (u, v) to path P_u
+        - if (u,v) is red then R = true
+        - if (u,v) is yellow and R for P_u is true then do not add P_v to the path list since it is invalid 
+        - else, insert P_v into B
+  return P
+
+
+3.
+From the assignment prompt all I gathered was that the question was asking for an algorithm to compute the size of the set C(w).
+To me this looks like a simple counting loop... simply collect all the paths in a graph and count the number of
+edges encountered along each given path.  Since each edge has a color, then C(w) is simply the number of edges in a graph.
+
+To design an algorithm for this problem we need an algorithm that finds all the paths in a graph.  Lets also assume that the 
+graph G is a DAG since we know it is directed let us just assume there are no cycles,  otherwise there are an infiite number of
+paths possible.  The DAG requirment restricts the number of paths to a finite set.  With this requriment
+
+
+4. 
+  This is an interesting question since the shortest path could differ significantly from the path with a minimal W(w).
+For example take path w_1 which has six nodes with weights of one between each of them.  Now take path w_2 with three nodes 
+and two edges connecting them.  One edge of weight two and one edge of weight one.  Path w_2 is shortest with a total cost of 
+3 while w_1 has a minimal W(w) of 1 even though it is the longer of the two paths. This difference between the addition used 
+in finding the shortest path and multiplication used in calculating W(w) is an interesting property.  It leads one to assume 
+that a shortest path algorithm is not applicable in this case...  I am uncertain on how to proceed.  
+
+
