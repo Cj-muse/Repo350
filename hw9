@@ -64,13 +64,20 @@ Algorithm:
 
 
 3.
-From the assignment prompt all I gathered was that the question was asking for an algorithm to compute the size of the set C(w).
-To me this looks like a simple counting loop... simply collect all the paths in a graph and count the number of
-edges encountered along each given path.  Since each edge has a color, then C(w) is simply the number of edges in a graph.
+An algorithm to compute the size of the set C(w) would be a combination of multiple simpler algorithms.
+First collect all the paths in a graph and their corosponding color sequences. This can be done by using a
+depth first search to collect all paths and modifying it to keep track of the color sequence as well.  A list 
+would be a capable data structure.  Once all color sequences are collected, then compare each of them to all others 
+and remove any duplicates so that we are left with a set of all unique color sequences. The size of this set 
+is the size of set {C(w): w being a unique path}.
 
-To design an algorithm for this problem we need an algorithm that finds all the paths in a graph.  Lets also assume that the 
-graph G is a DAG since we know it is directed let us just assume there are no cycles,  otherwise there are an infiite number of
-paths possible.  The DAG requirment restricts the number of paths to a finite set.  With this requriment
+v is a vertex in G
+
+DFS(G,v):
+  label v as discovered
+    for all edges from v to w in G.adjacentEdges(v) 
+      if vertex w is not labeled as discovered then
+        recursively call DFS(G,w)
 
 
 4. 
@@ -80,5 +87,39 @@ and two edges connecting them.  One edge of weight two and one edge of weight on
 3 while w_1 has a minimal W(w) of 1 even though it is the longer of the two paths. This difference between the addition used 
 in finding the shortest path and multiplication used in calculating W(w) is an interesting property.  It leads one to assume 
 that a shortest path algorithm is not applicable in this case...  I am uncertain on how to proceed.  
+
+After some consideration I relize that a shortest path algorithm can be used and the addition within the algorithm can be replaced by 
+multiplication.
+
+see the following adaptation of Dijkstra's algorithm.
+NOTE: distance may be misleading since now we are multiplying weights.
+  However just know that for a given path dist() ends up being W().
+
+
+     Q = vertex set 
+     W = value specified in question
+
+     for each vertex v in Graph:           // Initialization
+       dist(v) = INFINITY                  // Unknown distance from source to v
+       prev(v) = UNDEFINED                 // Previous node in optimal multiplied path from source
+       add v to Q                          // All nodes initially in Q (unvisited nodes)
+     dist(source) = 0                      // W from source to source
+     
+     while Q is not empty:
+      u = vertex in Q with min dist(u)    // Source node will be selected first
+      remove u from Q 
+       
+      for each neighbor v of u:           // where v is still in Q.
+        alt = dist(u) * weight(u, v)      // THIS IS THE MOST IMPORTANT PART (Instead of addition it is now multiplication)
+        if alt < dist(v):               // A smaller path to v has been found
+          dist(v) = alt 
+          prev(v) = u 
+
+      return dist(), prev()              // will be minimal W(w) with w being the path
+
+
+
+
+
 
 
