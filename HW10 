@@ -1,0 +1,18 @@
+Conner Mattingly
+11282717
+HW10
+
+
+1.
+By using algorithmic reduction we can prove that A <= C.  First step would involve reducing C to B.  After that reduction,  one would need to then reduce B to A. If C can reduce to B and in turn B can reduce to A, then we know that C can be reduced to A.  Therefore proving that A <= C. 
+
+2.
+A possible NP algorithm to solve the given question would be the following.
+The algorithm would involve guessing a linear ordering of nodes.  Then checking each node in order to see if they are connected.  If all nodes are connected, and since they are ordered in a linear fashion, then we know; there is a path on G such that each node on G is visited exactly once. If this path exsists than it can be guessed. 
+
+3.
+To see if there is a path on G that connects each node, an algorithm similar to the algorithm described in my answer to problem two, would work.  This is because question three again wants to see if every node is covered.  However, the difference in problem three is that there can be loops, also known as SCC's.  Because of this we could essentially use the same algorithm as in problem two, but with an added layer of abstraction.  The abstraction is as follows;  Instead of guessing a linear ordering of nodes in graph G, we would guess a linear ordering of SCC's in G.  We would then need to check if these SCC's are all connected in that linear order. 
+
+4.
+My current thoughts about how to approach this problem steer me in the direction of reduction. I think either reducing C1 to C2 and C2 to C1, or, trying to reduce C1 and C2 to a third circuit C3.  However, I am unsure how to go any further with this approach...
+
